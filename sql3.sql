@@ -1,9 +1,20 @@
 
- Source Server         : careco-amela-0305
- Source Server Type    : MySQL
- Source Server Version : 50739
- Source Host           : localhost:3306
- Source Schema         : db03
+DROP TABLE IF EXISTS `m_charge_revise_kind`;
+CREATE TABLE `m_charge_revise_kind`  (
+  `charge_revise_kind_id` bigint(20) NOT NULL,
+  `valid_flg` tinyint(4) NOT NULL,
+  `del_flg` tinyint(4) NOT NULL,
+  `show_type` tinyint(4) NOT NULL,
+  `charge_revise_kind_kana` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `charge_revise_kind_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `sort_no` int(11) NULL DEFAULT NULL,
+  `regist_stamp` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
+  `update_stamp` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),
+  `update_user` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `parent_tran_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `tran_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `tran_status` tinyint(4) NOT NULL,
+  PRIMARY KEY (`charge_revise_kind_id`, `tran_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
